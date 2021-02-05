@@ -10442,5 +10442,9 @@ fieldset:disabled .btn {
   }
 }
 
+.grow {
+  transform: scale(1.5);
+}
+
 
 /*# sourceMappingURL=bootstrap.min.css.map */

@@ -87,7 +87,7 @@ const putContainer = (element) => {
 const ContentCard = (innerHTML) => {
   return `
     <div class="card mt-4">
-      <div id="content-card" class="card-body">
+      <div id="content-card" style="overflow: scroll" class="card-body">
         ${innerHTML}
       </div>
     </div>
@@ -134,12 +134,28 @@ const loadPage = () => {
     if (tr.style.backgroundColor == "yellow") {
       tr.children[0].innerHTML = "*** Professor Solution ***";
     }
+    tr.classList.add("text-center");
+    tr.children[0].style.textAlign = "left";
+    if (index > 2) {
+      console.log(tr);
+      for (i = 1; i < tr.children.length; i++) {
+        if (tr.children[i].children[0].innerHTML == ".") {
+          tr.children[i].children[0].style.color = "#41cc00";
+          tr.children[i].children[0].classList.add("grow");
+          tr.children[i].children[0].innerHTML = "✔";
+        } else {
+          tr.children[i].children[0].classList.add("grow");
+          tr.children[i].children[0].innerHTML = "✘";
+        }
+      }
+    }
+
     tr.addEventListener("click", (el) => {
       curTar.bgColor = "";
       curTar = el.currentTarget;
       curTar.bgColor = "#ffa500";
       for (i = 1; i < curTar.children.length; i++) {
-        setTo = curTar.children[i].innerText == "X" && good[i] ? "#ffa500" : "";
+        setTo = curTar.children[i].innerText == "✘" && good[i] ? "#ffa500" : "";
         upper[0].children[i].style.backgroundColor = setTo;
         upper[1].children[i].style.backgroundColor = setTo;
         upper[2].children[i].style.backgroundColor = setTo;
