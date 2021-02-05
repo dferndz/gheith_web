@@ -169,3 +169,14 @@ try {
 } catch (error) {
   console.log("page already loaded");
 }
+
+const preCode = document.querySelector("div.container > pre");
+const codeTag = document.createElement("code");
+codeTag.classList.add("cpp");
+
+if (preCode) {
+  codeTag.innerHTML = preCode.innerHTML;
+  hljs.highlightBlock(codeTag);
+  preCode.innerHTML = "";
+  document.querySelector("div.container > pre").appendChild(codeTag);
+}
