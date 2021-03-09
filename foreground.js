@@ -166,6 +166,7 @@ const loadPage = () => {
 
 try {
   loadPage();
+  document.title = `Assignment ${env.assignmentInfo.assignment}`;
 } catch (error) {
   console.log("page already loaded");
 }
